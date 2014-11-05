@@ -32,7 +32,7 @@ func init() {
 }
 
 func newPool(server *url.URL) *redis.Pool {
-	log.Printf("connecting to redis: %s", server)
+	log.Printf("connecting to redis: %s://%s:***@%s", server.Scheme, server.User.Username(), server.Host)
 	return &redis.Pool{
 		MaxIdle:     3,
 		IdleTimeout: 4 * time.Minute,
